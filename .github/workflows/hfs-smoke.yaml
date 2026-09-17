@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: be771bdf2360ecae8971090606b966ecc4f9de45
+          ref: cb4ae1de667e86fdf48542bfdbaeea6a2adb9110
       - run: python3 .github/scripts/ci.py --app hfs --train community --test-file ${{ matrix.fixture }}
