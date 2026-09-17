@@ -1,0 +1,17 @@
+name: HFS catalog smoke tests
+on:
+  push:
+    branches: [codex/hfs-validation]
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture: [basic-values.yaml, advanced-values.yaml]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: e96067c54a4a8017530a1d291b45547179ae532a
+      - run: python3 .github/scripts/ci.py --app hfs --train community --test-file ${{ matrix.fixture }}
